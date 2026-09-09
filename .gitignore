@@ -1,0 +1,7 @@
+archive/
+.claude/
+tools/_work/
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
