@@ -362,10 +362,9 @@
 <!-- ===== ROADMAP: how the experience is built (scroll-driven) ===== -->
 <section class="roadmap" id="roadmap" aria-label="מבנה החוויה">
     <div class="roadmap-sticky">
-        <picture class="rm-bg" aria-hidden="true">
-            <source media="(max-width: 1023px)" srcset="assets/roadmap/road-mobile.webp">
-            <img src="assets/roadmap/road-desktop.webp" alt="" loading="lazy" decoding="async" onerror="var p=this.parentNode;if(p){p.className='rm-road-css';p.removeChild(this)}">
-        </picture>
+        <!-- Drawn road. When a real top-down road photo lands in assets/roadmap/, restore the
+             <picture class="rm-bg"> with road-desktop.webp / road-mobile.webp instead of this div. -->
+        <div class="rm-road-css" aria-hidden="true"></div>
         <div class="rm-scrim" aria-hidden="true"></div>
         <div class="rm-header">
             <span class="section-tag" data-he="איך זה עובד" data-en="How it works" data-ru="Как это устроено" data-ar="كيف يعمل">איך זה עובד</span>
