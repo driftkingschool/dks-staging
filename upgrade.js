@@ -172,7 +172,7 @@ document.addEventListener('click', function (e) {
         lastW = W; lastH = H;
         svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
         var mobile = W < 768;
-        var y0 = mobile ? H * 0.20 : H * 0.20, y1 = mobile ? H * 0.62 : H * 0.95;
+        var y0 = mobile ? H * 0.30 : H * 0.30, y1 = mobile ? H * 0.62 : H * 0.95;
         var span = y1 - y0;
         var d = 'M ' + (W * 0.5) + ' ' + y0 +
             ' C ' + (W * 0.22) + ' ' + (y0 + span * 0.22) + ', ' + (W * 0.78) + ' ' + (y0 + span * 0.40) + ', ' + (W * 0.5) + ' ' + (y0 + span * 0.56) +

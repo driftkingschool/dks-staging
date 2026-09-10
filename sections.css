@@ -442,6 +442,7 @@ body.has-site-bg .adv-card { border-color: rgba(255,255,255,0.14); }
 .fc-toggle[aria-expanded="true"] .fc-open { display: none; }
 .fc-toggle[aria-expanded="true"] .fc-close { display: block; }
 .fc-menu { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+.fc-menu[hidden] { display: none; }
 .fc-item {
     display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.55rem 1rem 0.55rem 0.6rem;
     border-radius: 999px; background: #ffffff; color: var(--text-dark); font-weight: 700; font-size: 0.9rem;
