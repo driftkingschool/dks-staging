@@ -1,5 +1,7 @@
 archive/
-.claude/
+# Claude Code: vendored agent skills are tracked; local session state is not
+.claude/*
+!.claude/skills/
 tools/_work/
 Thumbs.db
 desktop.ini
