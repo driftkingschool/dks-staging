@@ -12,6 +12,9 @@ Rules
 
 Data files Paul edits
 - `data/reels.json`: set `"selected": true` on the reels to show (id = the Instagram reel id).
+  Selected reels are ordered by `views`, highest first. A reel published too recently to have a
+  view count gets `"pinned": true` so it leads the carousel anyway; drop the flag and fill in
+  `views` once the real number exists. A reel with `views: 0` shows no view badge.
 - `data/reviews.json`: set `"selected": true` on 8-12 five-star reviews.
 
 Placeholders (promotion gate)

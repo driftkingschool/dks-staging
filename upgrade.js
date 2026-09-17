@@ -233,7 +233,8 @@ document.addEventListener('click', function (e) {
                 '<div class="reel-embed" data-id="' + esc(r.id) + '">' +
                 '<blockquote class="instagram-media" data-instgrm-permalink="' + reelUrl(r.id) + '" data-instgrm-version="14" style="background:#0f1115;border:0;margin:0;padding:0;width:100%;min-width:0">' +
                 '<a href="' + reelUrl(r.id) + '" target="_blank" rel="noopener" style="color:#fff;display:block;padding:2rem;text-align:center">Instagram</a></blockquote></div>' +
-                '<div class="reel-meta"><span class="reel-views"><svg class="icon"><use href="#i-eye"/></svg>' + fmt(r.views) + ' <span data-k="views">' + esc(t(VIEWS)) + '</span></span>' +
+                '<div class="reel-meta">' +
+                (Number(r.views) > 0 ? '<span class="reel-views"><svg class="icon"><use href="#i-eye"/></svg>' + fmt(r.views) + ' <span data-k="views">' + esc(t(VIEWS)) + '</span></span>' : '<span class="reel-views"></span>') +
                 '<a class="reel-open" href="' + reelUrl(r.id) + '" target="_blank" rel="noopener" data-event="reel_open" data-pkg="' + esc(r.id) + '" data-k="open">' + esc(t(OPEN)) + '</a></div>' +
                 '</article>';
         }).join('');
@@ -259,7 +260,12 @@ document.addEventListener('click', function (e) {
         loaded = true;
         fetch('data/reels.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
             items = (Array.isArray(j) ? j : []).filter(function (r) { return r && r.selected && r.id; })
-                .sort(function (a, b) { return (b.views || 0) - (a.views || 0); });
+                .sort(function (a, b) {
+                    // a freshly published reel has no view count yet, so "pinned" keeps it first
+                    // instead of letting a 0 sort it to the end
+                    if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1;
+                    return (b.views || 0) - (a.views || 0);
+                });
             if (!items.length) { sec.hidden = true; return; }
             render();
             inject();
